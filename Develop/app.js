@@ -34,46 +34,85 @@ inquirer.prompt([
        name: "id",
    },
    {
-       type: "input",
+       type: "email",
        message:"What is your email address?",
        name: "email",
    },
 ]).then(function(response){
-   this.position = response.position;
-   this.name = response.name;
-   this.id = response.id;
-   this.email = response.email;
-   const newEmployee = new Employee(this.name, this.id, this.email);
-   if (this.position === "Manager") {
-       fs.appendFile("manager.html", Manager(response), function(error){
-           if (error) {
-               console.log(error);
-               return;
-           }
-           console.log("Success! The team has a manager.");
-       }); 
-   } else if (this.position === "Engineer") {
-       fs.appendFile("engineer.html", Engineer(response), function(error){
-           if (error) {
-               console.log(error);
-               return;
-           }
-           console.log("Success! Added an Engineer to the team.");
-       });
-   } else if (this.position === "intern") {
-       fs.appendFile("intern.html", Intern(response), function(error){
-           if (error) {
-               console.log(error);
-               return;
-           }
-           console.log("Success! Added an intern to the team.");
-       });
-   }
+    this.position = response.position;
+    this.name = response.name;
+    this.id = response.id;
+    this.email = response.email;
+
+    // test code
+    const emailSymbol = "@";
+    const comSymbol = ".com";
+    function checkEmail() {
+        let email = this.email.split("");
+
+            if (email.includes(emailSymbol) && email.includes(comSymbol)) {
+                return;
+            } else {
+                return console.log("Please enter a valid email address.");
+            }
+    }
+    checkEmail();
+    //test code
+
+    if (this.position === "Manager") {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is your office number?",
+                name: "officeNumber",
+            }
+        ]).then(function(response) {
+            fs.appendFile("main.html", new Manager(response), function(error){
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+                console.log("Success! The team has a manager.");
+            }) 
+        })
+    } else if (this.position === "Engineer") {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is your GitHub account name?",
+                name: "GitHub",
+            }
+        ]).then(function(response) {
+            fs.appendFile("engineer.html", new Engineer(response), function(error){
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+                console.log("Success! Added an Engineer to the team.");
+            }) 
+        })
+    } else if (this.position === "intern") {
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is your GitHub account name?",
+                name: "GitHub",
+            }
+        ]).then(function(response) {
+            fs.appendFile("intern.html", Intern(response), function(error){
+                if (error) {
+                    console.log(error);
+                    return;
+                }
+                console.log("Success! Added an intern to the team.");
+            }); 
+        }); 
+    }
 });
 
 
 const newEmployee = new Employee("this.name", 4, "name@name.com");
-console.log(newEmployee);
+
 
 
 // After the user has input all employees desired, call the `render` function (required
