@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -42,6 +43,7 @@ inquirer.prompt([
    this.name = response.name;
    this.id = response.id;
    this.email = response.email;
+   const newEmployee = new Employee(this.name, this.id, this.email);
    if (this.position === "Manager") {
        fs.appendFile("manager.html", Manager(response), function(error){
            if (error) {
@@ -67,6 +69,11 @@ inquirer.prompt([
            console.log("Success! Added an intern to the team.");
        });
    }
+});
+
+
+const newEmployee = new Employee("this.name", 4, "name@name.com");
+console.log(newEmployee);
 
 
 // After the user has input all employees desired, call the `render` function (required
@@ -87,4 +94,4 @@ inquirer.prompt([
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to work!
