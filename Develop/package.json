@@ -23,6 +23,7 @@
   "dependencies": {
     "email": "^0.2.6",
     "email-existence": "^0.1.6",
+    "email-validator": "^2.0.4",
     "fs": "0.0.1-security",
     "inquirer": "^6.3.1",
     "onvalidation": "^2.2.0",
