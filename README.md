@@ -24,6 +24,9 @@
 ## <a name="usage">Usage:</a>
 *    Build dynamically generated websites, can be edited to fit many different roles.
 
+## Screenshot of webpage
+![Screenshot of builder](myteam.png)
+
 ## <a name="github">Github URL:</a>
 *    [https://github.com/Carlo-Defilippis/Team_Builder_App](https://github.com/Carlo-Defilippis/Team_Builder_App)
     
