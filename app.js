@@ -33,7 +33,7 @@ function addMore() {
                     return;
                 }
             });
-            return console.log("HTML has succesfully been created!");
+            return console.log("HTML has succesfully been created! Please navigate to the output folder and open the main.html!");
         }
     });
 }
